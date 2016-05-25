@@ -21,7 +21,7 @@ public class testsketch : MonoBehaviour {
         int totalcubes = products.GetLength(0);
 
         float totaldistance = 7;
-        int i = 0;
+        int i = 0, j = 0, k = 0;
 
         //We can now loop through the array of objects and access each object individually
         foreach (Product product in products)
@@ -29,15 +29,31 @@ public class testsketch : MonoBehaviour {
             //Example of how to use the object
             Debug.Log("This products name is: " + product.Title);
 
-                float perc = i / (float)totalcubes;
-                i++;
+            float perc = i /(float)totalcubes;
+            i++;
                 float sin = Mathf.Sin(perc * Mathf.PI / 2);
-
-                float x = 4.0f + sin * totaldistance;
+                float x = 2.0f + sin * totaldistance;
                 float y = 10.0f;
-                float z = 0.0f;
+            if (product.ListName == "Assignment 2 (ToDo)")
+            {
+            perc = i / (float)totalcubes;
+            i++;
+            y = 15.0f;
+            }else if(product.ListName == "Assignment 2 (doing)")
+            {
+            perc = j / (float)totalcubes;
+            j++;
+            y = 10.0f;
+            }else
+            {
+            perc = k / (float)totalcubes;
+            k++;
+            y = 5.0f;
+            }
+            float z = 0.0f;
 
-                var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
+
+            var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
                 newCube.GetComponent<CubeCode>().SetSize(1f * (1.0f - perc));
                 newCube.GetComponent<CubeCode>().RotateSpeed = .2f + perc * 2.0f;
                 newCube.GetComponentInChildren<TextMesh>().text = product.Title;
