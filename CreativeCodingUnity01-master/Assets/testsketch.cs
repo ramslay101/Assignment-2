@@ -30,32 +30,31 @@ public class testsketch : MonoBehaviour {
             Debug.Log("This products name is: " + product.Title);
 
             float perc = i /(float)totalcubes;
-            i++;
                 float sin = Mathf.Sin(perc * Mathf.PI / 2);
-                float x = 2.0f + sin * totaldistance;
+                float x = 1.0f + sin * totaldistance;
                 float y = 10.0f;
             if (product.ListName == "Assignment 2 (ToDo)")
             {
             perc = i / (float)totalcubes;
             i++;
-            y = 15.0f;
+            y = 13.0f;
             }else if(product.ListName == "Assignment 2 (doing)")
             {
             perc = j / (float)totalcubes;
             j++;
-            y = 10.0f;
+            y = 8.0f;
             }else
             {
             perc = k / (float)totalcubes;
             k++;
-            y = 5.0f;
+            y = 3.0f;
             }
             float z = 0.0f;
 
 
             var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
                 newCube.GetComponent<CubeCode>().SetSize(1f * (1.0f - perc));
-                newCube.GetComponent<CubeCode>().RotateSpeed = .2f + perc * 2.0f;
+                newCube.GetComponent<CubeCode>().RotateSpeed = .8f + perc * 2.0f;
                 newCube.GetComponentInChildren<TextMesh>().text = product.Title;
         }
 	}
